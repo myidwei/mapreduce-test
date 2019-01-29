@@ -16,6 +16,7 @@ public class GrepMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
     protected void map(LongWritable key, Text value,Context context)
             throws IOException, InterruptedException {
+        //
         String pattern = context.getConfiguration().get("grep");
         String str = value.toString();
         String[] lines = str.split("\n");

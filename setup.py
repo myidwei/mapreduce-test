@@ -1,6 +1,11 @@
 import os
 import sys, socket
 
+def writeHadoopConfigFile(name,xml):
+    f = open("/usr/local/hadoop/etc/hadoop/" + name,"w")
+    f.write(xml)
+    f.close()
+
 mf = open("master","r")
 sf = open("slaves","r")
 mip = mf.read().strip()

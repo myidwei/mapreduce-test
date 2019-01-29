@@ -1,5 +1,4 @@
 #!/bin/sh
-base_dir=$(cd "$(dirname "$0")";pwd)
 ../../start.sh
 mvn clean package
 /usr/local/hadoop/bin/hdfs dfs -rm -r /logstat2/input/
