@@ -8,7 +8,7 @@
 -file ../../mapreduce-test-python/wordcount2/mapper.py -mapper ../../mapreduce-test-python/wordcount2/mapper.py \
 -file ../../mapreduce-test-python/wordcount2/reducer.py -reducer ../../mapreduce-test-python/wordcount2/reducer.py \
 -input /wordcount2/input/* -output /wordcount2/output/
-/usr/local/hadoop/bin/hdfs dfs -cat /wordcount2/output/part-00000
+/usr/local/hadoop/bin/hdfs dfs -cat /wordcount2/output/part-00000 | tail -100
 /usr/local/hadoop/bin/hdfs dfs -rm -r /wordcount2/input/
 /usr/local/hadoop/bin/hdfs dfs -rm -r /wordcount2/output/
 ../../stop.sh
