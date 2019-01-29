@@ -23,6 +23,7 @@ public class RunJob
         Configuration config = new Configuration();
         try {
             FileSystem fs = FileSystem.get(config);
+            //获取参数
             String pattern = args[0];
             config.set("grep", pattern);
             Job job = Job.getInstance(config);
@@ -32,7 +33,9 @@ public class RunJob
             job.setReducerClass(GrepReducer.class);
             job.setMapOutputKeyClass(Text.class);
             job.setMapOutputValueClass(IntWritable.class);
+            //设置输入目录
             FileInputFormat.addInputPath(job, new Path("/grep/input/"));
+            //设置输出目录
             Path outPath = new Path("/grep/output");
             if(fs.exists(outPath)){
                 fs.delete(outPath, true);

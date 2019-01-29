@@ -16,14 +16,17 @@ public class GrepMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
     protected void map(LongWritable key, Text value,Context context)
             throws IOException, InterruptedException {
-        //
+        //get grep pattern
         String pattern = context.getConfiguration().get("grep");
         String str = value.toString();
+        //split every line
         String[] lines = str.split("\n");
         for(String line : lines){
+            //check if match the pattern
             Pattern r = Pattern.compile(pattern);
             Matcher m = r.matcher(line);
             if (m.find()) {
+                //add to input
                 context.write(new Text("input"), new IntWritable(1));
             }
         }
